@@ -1,11 +1,18 @@
 package routers
 
-import "github.com/gin-gonic/gin"
+import (
+	"github.com/DraftTin/gin-blog/global"
+	"github.com/gin-gonic/gin"
+)
+
+type RouterGroup struct {
+	*gin.Engine
+}
 
 func InitRouter() *gin.Engine {
-	router := gin.Default()
-	router.GET("/", func(c *gin.Context) {
-		c.String(200, "asdlkjaslkdjlaksjdklaj")
-	})
-	return router
+	gin.SetMode(global.Config.System.Env)
+	basicRouter := gin.Default()
+	routerGroup := RouterGroup{Engine: basicRouter}
+	routerGroup.SettingsRouter()
+	return basicRouter
 }
