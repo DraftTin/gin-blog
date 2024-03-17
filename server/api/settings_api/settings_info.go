@@ -1,7 +1,10 @@
 package settings_api
 
-import "github.com/gin-gonic/gin"
+import (
+	"github.com/DraftTin/gin-blog/models/response"
+	"github.com/gin-gonic/gin"
+)
 
 func (SettingsApi) SettingInfoView(c *gin.Context) {
-	c.JSON(200, gin.H{"msg": "hello, world!"})
+	response.FailWithCode(response.SettingError, c)
 }
