@@ -13,5 +13,5 @@ type MySQL struct {
 }
 
 func (m *MySQL) GetDSN() string {
-	return m.User + ":" + m.Password + "@tcp(" + strconv.Itoa(m.Port) + ")/" + m.Db + "?" + m.Config
+	return m.User + ":" + m.Password + "@tcp(" + m.Host + ":" + strconv.Itoa(m.Port) + ")/" + m.Db + "?" + m.Config
 }
